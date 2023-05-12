@@ -11,6 +11,7 @@ class ChatScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: true,
       appBar: AppBar(
         title: const Text("Ximya"),
         backgroundColor: const Color(0xFF007AFF),
@@ -21,6 +22,7 @@ class ChatScreen extends StatelessWidget {
             child: GestureDetector(
               onTap: () {
                 context.read<ChatController>().focusNode.unfocus();
+                // FocusScope.of(context).unfocus();
               },
               child: Align(
                 alignment: Alignment.topCenter,
@@ -29,6 +31,8 @@ class ChatScreen extends StatelessWidget {
                       controller.chatList.reversed.toList(),
                   builder: (context, chatList, child) {
                     return ListView.separated(
+                      shrinkWrap: true,
+                      reverse: true,
                       padding: const EdgeInsets.only(top: 12, bottom: 20) +
                           const EdgeInsets.symmetric(horizontal: 12),
                       separatorBuilder: (_, __) => const SizedBox(
@@ -36,8 +40,6 @@ class ChatScreen extends StatelessWidget {
                       ),
                       controller:
                           context.read<ChatController>().scrollController,
-                      reverse: true,
-                      shrinkWrap: true,
                       itemCount: chatList.length,
                       itemBuilder: (context, index) {
                         return Bubble(chat: chatList[index]);
