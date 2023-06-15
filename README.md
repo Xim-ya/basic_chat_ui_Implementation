@@ -25,16 +25,19 @@ Scaffold(
 Generally, the chat screen has a simple structure. It consists of an `AppBar`, `Chat ListView`, and a` TextField` fixed at the bottom.
 
 An important point here is that the chat list view and the text field must be wrapped in a `Column` widget, and the chat list view section must be wrapped in an `Expanded` widget.<br/><br/>
-![1_q539ihPF8YxTMxLd5Pv-Mg.png](..%2F..%2FDesktop%2F1_q539ihPF8YxTMxLd5Pv-Mg.png) <br/></br>
+<img src="https://github.com/Xim-ya/Basic_Chat_UI_Implementation/assets/75591730/e180b031-25d1-4861-a3ea-726e345f671b"> <br/></br>
 The `chat list view` and `input field` wrapped in a Column widget are arranged vertically, and since the `chat list view section` is wrapped in Expanded, the `input field` view is naturally fixed at the bottom. This has the advantage of not needing to fix the `input field` widget at the bottom using Stack & Positioned widgets.
 Please note that the examples I will continue to show are also arranged in this structure.
 
 
 # 1. Interaction where the input field and chat list view section respond to changes when the virtual keyboard area is detected
-![1_XBDF9THkk7sBgOhBTanUuA.png](..%2F..%2FDesktop%2F1_XBDF9THkk7sBgOhBTanUuA.png) <br/> <br/>
+
+<img src="https://github.com/Xim-ya/Basic_Chat_UI_Implementation/assets/75591730/1aaefc1f-dc80-420a-8c94-a12d2bd47908"/> <br/> <br/>
 The first chat interaction to consider is how the `input field` and `chat list` `view section` respond to changes when the `virtual keyboard` appears. It is important for the user experience that when the virtual keyboard appears, the input field and chat list view naturally follow the movement.</br><br/>
 To achieve this, you need to set the following two `properties`
+
 ### resizeToAvoidBottomInset property
+
 ```dart
 return Scaffold(
       resizeToAvoidBottomInset: true, // assign true
@@ -61,12 +64,12 @@ For example, controller.chatList.reversed.toList().
 
 
 # 2. Interaction when chat is added and scrolled down!
-![1_vpfbjGaqHBR2UsijOyvybA-1.png](..%2F..%2FDesktop%2F1_vpfbjGaqHBR2UsijOyvybA-1.png)<br/><br/>
+<img src="https://github.com/Xim-ya/Basic_Chat_UI_Implementation/assets/75591730/9f2b687a-0d5d-4218-92ea-0f91c5ddf726"><br/><br/>
 When a message is added to the chat list, it should be placed at the bottom and scroll naturally. To achieve this, you need to set the `reversed` property of the ListView to `true`. By setting reversed to true, items are arranged from bottom to top. Therefore, when a message is added, the area of the ListView expands and the scroll position changes.
 
 
 # 3. Aligning Chat Messages to the Top
-![1_dl_uXw_kxCY1hKG1jZ0F6g.png](..%2F..%2FDesktop%2F1_dl_uXw_kxCY1hKG1jZ0F6g.png)<br/><br/>
+<img src="https://github.com/Xim-ya/Basic_Chat_UI_Implementation/assets/75591730/4686e6bb-6124-4741-a131-31bfa562bdf8"><br/><br/>
 So far, I've told you that you need to set the `reversed` property of the ListView widget to `true`. However, this leads to the issue of the chat list section being placed at the very bottom of the screen.
 ```dart
 Align(
@@ -86,7 +89,7 @@ Since setting the reversed property to true places the chat list section at the 
 
 
 # 4. Optimizing Scroll Position after Sending Messages
-![1_BBTdIugstFnotrewLyBNwA.png](..%2F..%2FDesktop%2F1_BBTdIugstFnotrewLyBNwA.png)<br/><br/>
+<img src="https://github.com/Xim-ya/Basic_Chat_UI_Implementation/assets/75591730/7c65aa9f-c2a9-42b5-b3d1-3a9594dfa941"><br/><br/>
 When a chat message is sent, the scroll position should change to the very bottom, regardless of where the current scroll position is. To achieve this, you can control the scrolling behavior of the ListView using a `ScrollController`.
 
 ```dart
